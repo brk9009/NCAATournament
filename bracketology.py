@@ -16,8 +16,10 @@ soup = BeautifulSoup(page.content, "html.parser")
 websiteInfo = soup.find(id="container-x")
 #print(websiteInfo.prettify())
 
-# Find the net sheet from the "ts-container" class in "container-x"
-netSheet = websiteInfo.select_one(".ts-container")
-print(netSheet.prettify())
+# Get the School name, conference, NET, record, and SoS
+basicSchoolInfoList = websiteInfo.find_all("div", class_="ts-flex-size-1")
+
+for basicSchoolInfo in basicSchoolInfoList:
+    print(basicSchoolInfo.prettify())
 
 
