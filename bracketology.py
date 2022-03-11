@@ -4,12 +4,12 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-from teams import team_links
+from teams import team_urls
 
 #urls = ["https://www.warrennolan.com/basketball/2022/team-net-sheet?team=Bellarmine"]
 
 # Get the HTML data
-for url in team_links:
+for url in team_urls:
     page = requests.get(url)
 
 # print(page.text)
