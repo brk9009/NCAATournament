@@ -1,21 +1,26 @@
 import requests
 from bs4 import BeautifulSoup
 
-from teams import team_urls
+from teams import teamUrls
+from sheetWriter import SheetWriter
 
 #urls = ["https://www.warrennolan.com/basketball/2022/team-net-sheet?team=Bellarmine"]
 
 class NetSheetParser():
     """Parse the net sheet for bracketology"""
+    global contendersData
+    contendersData = list()
 
-    def __init__(self, team_urls):
+    def __init__(self, teamUrls):
         """Initialize the urls"""
-        self.team_urls = team_urls
+        self.teamUrls = teamUrls
 
-    def loop_through_teams(self):
+    def get_every_teams_data(self):
         """Go through all the teams that can make the tournament"""
-        for url in self.team_urls:
+        for url in self.teamUrls:
             self.get_website_info(url)
+        # After looping, return every team's data    
+        return contendersData
 
     def get_website_info(self, url):
         """Get the team's html to parse through"""
@@ -27,21 +32,17 @@ class NetSheetParser():
         soup = BeautifulSoup(page.content, "html.parser")
 
         # Find the team's information from the "container-x" id
-        websiteInfo = soup.find(id="container-x")
+        self.websiteInfo = soup.find(id="container-x")
         #print(websiteInfo.prettify())
 
-        self.get_name_conf_record(websiteInfo)
+        self.get_name_conf_record()
 
-    def get_name_conf_record(self,websiteInfo):
+    def get_name_conf_record(self):
         """Parse through html to get the team's metrics"""
-        # Get the School name, conference, NET, record, and SoS
-        #basicSchoolInfoList = websiteInfo.find_all("div", class_="ts-flex-size-1")
+        self.teamInfoList = []
 
-        #for basicSchoolInfo in basicSchoolInfoList:
-        #    print(basicSchoolInfo.prettify())
-    
         # Parse the team name, conference, and record
-        teamBasics = websiteInfo.find("div", class_="ts-teamname")
+        teamBasics = self.websiteInfo.find("div", class_="ts-teamname")
         # Get the team name
         teamBasicsList = teamBasics.text.split('\n')
         print(teamBasicsList[0])
@@ -52,11 +53,23 @@ class NetSheetParser():
         record = conferenceAndRecord[1].split(')')
         print(record[0])
 
-        teamInfoList = websiteInfo.find_all("div", class_="ts-data-center")
+        self.teamInfoList.append(teamBasicsList[0].strip())
+        self.teamInfoList.append(conferenceAndRecord[0].strip())
+        self.teamInfoList.append(record[0].strip())
+        #print(self.teamInfoList)
+
+        #teamInfoList = self.websiteInfo.find_all("div", class_="ts-data-center")
         #for teamInfo in teamInfoList:
         #    print(teamInfo.text.strip())
+
+        self.add_team_metrics_to_global_list()
     
+    def add_team_metrics_to_global_list(self):
+        """Add the team's metrics to a list with every team's metrics"""
+        contendersData.append(self.teamInfoList)
+        #print(contendersData)
 
 # Main script to run the project
-net_sheet_parser = NetSheetParser(team_urls)
-net_sheet_parser.loop_through_teams()
+netSheetParser = NetSheetParser(teamUrls)
+teamSheets = netSheetParser.get_every_teams_data()
+print(teamSheets)
