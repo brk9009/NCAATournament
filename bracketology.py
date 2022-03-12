@@ -72,4 +72,6 @@ class NetSheetParser():
 # Main script to run the project
 netSheetParser = NetSheetParser(teamUrls)
 teamSheets = netSheetParser.get_every_teams_data()
-print(teamSheets)
+#print(teamSheets)
+sheetWriter = SheetWriter(teamSheets)
+sheetWriter.write_to_excel()
