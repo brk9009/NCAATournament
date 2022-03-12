@@ -10,7 +10,7 @@ class NetSheetParser():
     def __init__(self, teamUrls):
         """Initialize the urls"""
         self.teamUrls = teamUrls
-        self.contendersData = list()
+        self.allContendersData = list()
 
     def get_every_teams_data(self):
         """Go through all the teams that can make the tournament"""
@@ -19,9 +19,9 @@ class NetSheetParser():
             self.get_name_conf()
             self.get_other_metrics()
             self.add_team_metrics_to_list()
-            #self.add_team_metrics_to_global_list()
+            self.add_team_metrics_to_global_list()
         # After looping, return every team's data    
-        return self.contendersData
+        return self.allContendersData
 
     def get_website_html(self, url):
         """Get the team's html to parse through"""
@@ -38,7 +38,7 @@ class NetSheetParser():
 
     def get_name_conf(self):
         """Parse through html to get the team's name and conference"""
-        self.teamInfoList = []
+        self.individualTeamData = []
 
         # Parse the team name and conference
         teamBasics = self.websiteInfo.find("div", class_="ts-teamname")
@@ -53,19 +53,34 @@ class NetSheetParser():
 
     def get_other_metrics(self):
         """Parse through html to get NET, record, NET SoS, etc."""
-        teamInfoList = self.websiteInfo.find_all("div", class_="ts-data-center")
-        for teamInfo in teamInfoList:
-            print(teamInfo.text.strip())
+        i = 0
+
+        otherMetricsList = self.websiteInfo.find_all("div", class_="ts-data-center")
+        # Loop through each 'ts-data-center' data
+        for otherMetrics in otherMetricsList:
+            metricsList = otherMetrics.text.split('\n')
+            # first 'ts'data'center' is NET
+            if i == 0:
+                # Relevant data is in the 3rd spot
+                self.net = metricsList[2].lstrip(' ')
+                print(self.net)
+            elif i == 1:
+                self.record = metricsList[2].lstrip(' ')
+                print(self.record)
+            i=i+1
+
 
     def add_team_metrics_to_list(self):
         """Add the team's metrics to their own list."""
-        self.teamInfoList.append(self.teamName.strip())
-        self.teamInfoList.append(self.conference.strip())
-        print(self.teamInfoList)
+        self.individualTeamData.append(self.teamName.strip())
+        self.individualTeamData.append(self.conference.strip())
+        self.individualTeamData.append(self.record.strip())
+        self.individualTeamData.append(self.net.strip())
+        print(self.individualTeamData)
 
     def add_team_metrics_to_global_list(self):
         """Add the team's metric list to a list with every team's metrics"""
-        self.contendersData.append(self.teamInfoList)
+        self.allContendersData.append(self.individualTeamData)
         #print(contendersData)
 
 # Main script to run the project
