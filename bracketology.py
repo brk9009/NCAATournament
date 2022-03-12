@@ -12,7 +12,7 @@ class NetSheetParser():
         """Initialize the url"""
         self.team_urls = team_urls
 
-    def loopThroughTeams(self):
+    def loop_through_teams(self):
         for url in self.team_urls:
             self.scrape_team_info(url)
 
@@ -53,4 +53,4 @@ class NetSheetParser():
 
 # Main script to run the project
 net_sheet_parser = NetSheetParser(team_urls)
-net_sheet_parser.loopThroughTeams()
+net_sheet_parser.loop_through_teams()
