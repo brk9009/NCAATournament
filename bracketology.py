@@ -17,6 +17,7 @@ class NetSheetParser():
         for url in self.teamUrls:
             self.get_website_html(url)
             self.get_name_conf()
+            self.get_result_predictive_metrics()
             self.get_other_metrics()
             self.add_team_metrics_to_list()
             self.add_team_metrics_to_global_list()
@@ -45,11 +46,28 @@ class NetSheetParser():
         # Get the team name
         teamBasicsList = teamBasics.text.split('\n')
         self.teamName = teamBasicsList[0]
-        print(self.teamName)
         # Get the conference
         conferenceAndRecord = teamBasicsList[1].split('(')
         self.conference = conferenceAndRecord[0]
-        print(self.conference)
+
+    def get_result_predictive_metrics(self):
+        """Parse through html to get KPI, SOR, BPI, POM, SAG"""
+        i = 0
+
+        predictiveMetricsList = self.websiteInfo.find_all("div", class_="ts-data-left")
+        # Loop through each 'ts-data-left' data
+        for predictiveMetrics in predictiveMetricsList:
+            metricsList = predictiveMetrics.text.split('\n')
+            if i == 0:
+                # KPI is in the 1st spot, sor 2nd
+                self.kpi = metricsList[1].lstrip(' ')
+                self.sor = metricsList[2].lstrip(' ')
+            elif i == 1:
+                # BPI 1st, ken pom 2nd, sagarin 3rd
+                self.bpi = metricsList[1].lstrip(' ')
+                self.pom = metricsList[2].lstrip(' ')
+                self.sag = metricsList[3].lstrip(' ')
+            i=i+1
 
     def get_other_metrics(self):
         """Parse through html to get NET, record, NET SoS, etc."""
@@ -63,10 +81,16 @@ class NetSheetParser():
             if i == 0:
                 # Relevant data is in the 3rd spot
                 self.net = metricsList[2].lstrip(' ')
-                print(self.net)
             elif i == 1:
                 self.record = metricsList[2].lstrip(' ')
-                print(self.record)
+            elif i == 6:
+                self.q1 = metricsList[2].lstrip(' ')
+            elif i == 7:
+                self.q2 = metricsList[2].lstrip(' ')
+            elif i == 8:
+                self.q3 = metricsList[2].lstrip(' ')
+            elif i == 9:
+                self.q4 = metricsList[2].lstrip(' ')
             i=i+1
 
 
@@ -76,6 +100,16 @@ class NetSheetParser():
         self.individualTeamData.append(self.conference.strip())
         self.individualTeamData.append(self.record.strip())
         self.individualTeamData.append(self.net.strip())
+        self.individualTeamData.append(self.kpi.strip())
+        self.individualTeamData.append(self.sor.strip())
+        self.individualTeamData.append(self.bpi.strip())
+        self.individualTeamData.append(self.pom.strip())
+        self.individualTeamData.append(self.sag.strip())
+        self.individualTeamData.append(self.q1.strip())
+        self.individualTeamData.append(self.q2.strip())
+        self.individualTeamData.append(self.q3.strip())
+        self.individualTeamData.append(self.q4.strip())
+
         print(self.individualTeamData)
 
     def add_team_metrics_to_global_list(self):
