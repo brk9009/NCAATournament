@@ -1,3 +1,23 @@
-teamUrls = ['https://www.warrennolan.com/basketball/2022/team-net-sheet?team=Bellarmine',
-            'https://www.warrennolan.com/basketball/2022/team-net-sheet?team=Iowa-State']
+prefix = 'https://www.warrennolan.com/basketball/2022/team-net-sheet?team='
+teamUrls = [prefix+'Gonzaga', prefix+'Arizona', prefix+'Baylor', prefix+'Kansas',
+            prefix+'Kentucky', prefix+'Auburn', prefix+'Duke', prefix+'Villanova',
+            prefix+'Purdue', prefix+'Tennessee', prefix+'Texas-Tech', prefix+'Wisconsin',
+            prefix+'UCLA', prefix+'Illinois', prefix+'Arkansas', prefix+'Providence',
+            prefix+'Houston', prefix+'Connecticut', prefix+'Saint-Marys-College', prefix+'Iowa',
+            prefix+'Texas', prefix+'LSU', prefix+'Alabama', prefix+'Colorado-State',
+            prefix+'USC', prefix+'Ohio-State', prefix+'Michigan-State', prefix+'Murray-State',
+            prefix+'Boise-State', prefix+'Seton-Hall', prefix+'San-Diego-State', prefix+'TCU',
+            prefix+'North-Carolina', prefix+'Marquette', prefix+'Iowa-State', prefix+'Creighton',
+            prefix+'San-Francisco', prefix+'Memphis', prefix+'Loyola-Chicago', prefix+'Davidson',
+            prefix+'Miami-FL', prefix+'Michigan', prefix+'Wyoming', prefix+'Indiana',
+            prefix+'Notre-Dame', prefix+'Rutgers', prefix+'Xavier', prefix+'SMU',
+            prefix+'Virginia-Tech', prefix+'Oklahoma', prefix+'Wake-Forest', prefix+'VCU',
+            prefix+'Texas-AM', prefix+'Dayton', prefix+'BYU', prefix+'North-Texas',
+            prefix+'Utah-State', prefix+'Washington-State', prefix+'Mississippi-State', prefix+'Virginia',
+            prefix+'UAB', prefix+'South-Dakota-State',
+            prefix+'Chattanooga', prefix+'Vermont', prefix+'New-Mexico-State', prefix+'Kent-State',
+            prefix+'Princeton', prefix+'Montana-State', prefix+'Longwood', prefix+'Colgate',
+            prefix+'Delaware', prefix+'Saint-Peters', prefix+'Long-Beach-State', prefix+'Jacksonville-State',
+            prefix+'Georgia-State', prefix+'Norfolk-State', prefix+'Bryant', prefix+'Wright-State',
+            prefix+'Alcorn-State', prefix+'Southeastern-Louisiana']
 

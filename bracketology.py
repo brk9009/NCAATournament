@@ -110,7 +110,7 @@ class NetSheetParser():
         self.individualTeamData.append(self.q3.strip())
         self.individualTeamData.append(self.q4.strip())
 
-        print(self.individualTeamData)
+        #print(self.individualTeamData)
 
     def add_team_metrics_to_global_list(self):
         """Add the team's metric list to a list with every team's metrics"""
