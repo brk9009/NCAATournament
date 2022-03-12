@@ -41,8 +41,14 @@ class SheetWriter():
         # Start from the first cell below the headers
         row = 1
         col = 0
+        
+        # Loop through the list
+        for contenderData in self.contendersData:
+            col = 0
+            for metric in contenderData:
+                self.worksheet.write_string(row, col, metric)
+                col += 1
 
-        for team, conf, record in self.contendersData:
-            #print(team)
+            row +=1
 
         self.workbook.close()
