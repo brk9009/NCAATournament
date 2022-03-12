@@ -9,14 +9,16 @@ class NetSheetParser():
     """Parse the net sheet for bracketology"""
 
     def __init__(self, team_urls):
-        """Initialize the url"""
+        """Initialize the urls"""
         self.team_urls = team_urls
 
     def loop_through_teams(self):
+        """Go through all the teams that can make the tournament"""
         for url in self.team_urls:
-            self.scrape_team_info(url)
+            self.get_website_info(url)
 
-    def scrape_team_info(self, url):
+    def get_website_info(self, url):
+        """Get the team's html to parse through"""
         # Get the HTML data
         page = requests.get(url)
 
@@ -28,6 +30,10 @@ class NetSheetParser():
         websiteInfo = soup.find(id="container-x")
         #print(websiteInfo.prettify())
 
+        self.get_name_conf_record(websiteInfo)
+
+    def get_name_conf_record(self,websiteInfo):
+        """Parse through html to get the team's metrics"""
         # Get the School name, conference, NET, record, and SoS
         #basicSchoolInfoList = websiteInfo.find_all("div", class_="ts-flex-size-1")
 
