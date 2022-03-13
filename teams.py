@@ -15,11 +15,10 @@ teamUrls = [prefix+'Gonzaga', prefix+'Arizona', prefix+'Baylor', prefix+'Kansas'
             prefix+'Texas-AM', prefix+'Dayton', prefix+'BYU', prefix+'North-Texas',
             prefix+'Utah-State', prefix+'Washington-State', prefix+'Mississippi-State', prefix+'Virginia',
             prefix+'UAB', prefix+'South-Dakota-State',
-            prefix+'Chattanooga', prefix+'Vermont', prefix+'New-Mexico-State', prefix+'Kent-State',
+            prefix+'Chattanooga', prefix+'Vermont', prefix+'New-Mexico-State', prefix+'Akron',
             prefix+'Princeton', prefix+'Montana-State', prefix+'Longwood', prefix+'Colgate',
-            prefix+'Delaware', prefix+'Saint-Peters', prefix+'Long-Beach-State', prefix+'Jacksonville-State',
-            prefix+'Georgia-State', prefix+'Norfolk-State', prefix+'Bryant', prefix+'Wright-State',
-            prefix+'Texas-Southern', prefix+'Southeastern-Louisiana', 
-            prefix+'Akron', prefix+'Louisiana-Tech', prefix+'Yale', prefix+'Richmond',
-            prefix+'Texas-AM-Corpus-Christi', prefix+'Abilene-Christian', prefix+'Cal-State-Fullerton']
+            prefix+'Delaware', prefix+'Saint-Peters', prefix+'Jacksonville-State', prefix+'Georgia-State',
+            prefix+'Norfolk-State', prefix+'Bryant', prefix+'Wright-State', prefix+'Texas-Southern', 
+            prefix+'Texas-AM-Corpus-Christi', prefix+'Cal-State-Fullerton',
+            prefix+'Yale', prefix+'Richmond']
 
