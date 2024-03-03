@@ -82,10 +82,6 @@ class NetSheetParser():
             if i == 0:
                 # Relevant data is in the 3rd spot
                 self.net = metricsList[2].lstrip(' ')
-            # elif i == 1:
-                # self.record = metricsList[2].lstrip(' ')
-            # elif i == 2:
-                # self.road = metricsList[2].lstrip(' ')
             elif i == 3:
                 self.sos = metricsList[1].lstrip(' ')
                 self.nonconSos = metricsList[2].lstrip(' ')
