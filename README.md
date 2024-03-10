@@ -1,6 +1,9 @@
 # NCAATournament
-In Progress 
-Main functionality is working.
+Completed: 
+Main functionality.
+Added SoS and Non-Con SOS
+Removed Sagarin
 
-Still need to add all the teams.
-Formatting needs work.
+To-Do:
+Get teams from bracket-matrix to reduce manual work of adding teams. Will be a major effort.
+
