@@ -19,6 +19,7 @@ class NetSheetParser():
             self.get_name_conf()
             self.get_result_predictive_metrics()
             self.get_other_metrics()
+            self.calculate_metric_average()
             self.add_team_metrics_to_list()
             self.add_team_metrics_to_global_list()
         # After looping, return every team's data    
@@ -100,6 +101,15 @@ class NetSheetParser():
                 # self.neutralRecord = metricsList[5].lstrip(' ')
             i=i+1
 
+    def calculate_metric_average(self):
+        # Calculate the average of the 7 most used metrics
+        numbers = [float(self.wab), float(self.sor), float(self.torvik), 
+                   float(self.bpi), float(self.net), float(self.kpi), float(self.pom)]
+        
+        average = sum(numbers) / len(numbers)
+        rounded_average = round(average, 2)
+        self.metric_average = str(rounded_average)
+
 
     def add_team_metrics_to_list(self):
         """Add the team's metrics to their own list."""
@@ -109,6 +119,7 @@ class NetSheetParser():
         # self.individualTeamData.append(self.homeRecord.strip())
         # self.individualTeamData.append(self.roadRecord.strip())
         # self.individualTeamData.append(self.neutralRecord.strip())
+        self.individualTeamData.append(self.metric_average)
         self.individualTeamData.append(self.wab.strip())
         self.individualTeamData.append(self.sor.strip())
         self.individualTeamData.append(self.torvik.strip())
