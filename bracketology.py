@@ -59,15 +59,15 @@ class NetSheetParser():
         for predictiveMetrics in predictiveMetricsList:
             metricsList = predictiveMetrics.text.split('\n')
             if i == 0:
-                # KPI is in the 1st spot, sor 2nd
+                # KPI is in the 1st spot, sor 2nd, wab 3rd
                 self.kpi = metricsList[1].lstrip(' ')
                 self.sor = metricsList[2].lstrip(' ')
+                self.wab = metricsList[3].lstrip(' ')
             elif i == 1:
-                # BPI 1st, ken pom 2nd, sagarin 3rd
+                # BPI 1st, ken pom 2nd, torvik 3rd
                 self.bpi = metricsList[1].lstrip(' ')
                 self.pom = metricsList[2].lstrip(' ')
-                # Sagarin is outdated
-                # self.sag = metricsList[3].lstrip(' ')
+                self.torvik = metricsList[3].lstrip(' ')
             i=i+1
 
     def get_other_metrics(self):
@@ -95,9 +95,9 @@ class NetSheetParser():
                 self.q4 = metricsList[2].lstrip(' ')
             elif i == 10:
                 self.record = metricsList[2].lstrip(' ')
-                self.homeRecord = metricsList[3].lstrip(' ')
-                self.roadRecord = metricsList[4].lstrip(' ')
-                self.neutralRecord = metricsList[5].lstrip(' ')
+                # self.homeRecord = metricsList[3].lstrip(' ')
+                # self.roadRecord = metricsList[4].lstrip(' ')
+                # self.neutralRecord = metricsList[5].lstrip(' ')
             i=i+1
 
 
@@ -106,21 +106,21 @@ class NetSheetParser():
         self.individualTeamData.append(self.teamName.strip())
         self.individualTeamData.append(self.conference.strip())
         self.individualTeamData.append(self.record.strip())
-        self.individualTeamData.append(self.homeRecord.strip())
-        self.individualTeamData.append(self.roadRecord.strip())
-        self.individualTeamData.append(self.neutralRecord.strip())
-        self.individualTeamData.append(self.sos.strip())
-        self.individualTeamData.append(self.nonconSos.strip())
+        # self.individualTeamData.append(self.homeRecord.strip())
+        # self.individualTeamData.append(self.roadRecord.strip())
+        # self.individualTeamData.append(self.neutralRecord.strip())
+        self.individualTeamData.append(self.wab.strip())
+        self.individualTeamData.append(self.sor.strip())
+        self.individualTeamData.append(self.torvik.strip())
+        self.individualTeamData.append(self.bpi.strip())
         self.individualTeamData.append(self.net.strip())
         self.individualTeamData.append(self.kpi.strip())
-        self.individualTeamData.append(self.sor.strip())
-        self.individualTeamData.append(self.bpi.strip())
         self.individualTeamData.append(self.pom.strip())
-        #self.individualTeamData.append(self.sag.strip())
         self.individualTeamData.append(self.q1.strip())
         self.individualTeamData.append(self.q2.strip())
         self.individualTeamData.append(self.q3.strip())
         self.individualTeamData.append(self.q4.strip())
+        self.individualTeamData.append(self.nonconSos.strip())
 
         print(self.individualTeamData)
 
