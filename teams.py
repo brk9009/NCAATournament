@@ -14,8 +14,10 @@ teamUrls = [prefix+'Duke', prefix+'Michigan', prefix+'Arizona', prefix+'Florida'
             prefix+'New-Mexico', prefix+'San-Diego-State', prefix+'Boise-State', prefix+'Cincinnati',
             prefix+'Virginia-Tech', prefix+'Stanford', prefix+'Seton-Hall', prefix+'South-Florida',
             prefix+'Akron', prefix+'Yale', prefix+'Mcneese', prefix+'High-Point', 
-            prefix+'Northern-Iowa', prefix+'Utah-Valley', prefix+'Hofstra', prefix+'Sam-Houston-State',
+            prefix+'Northern-Iowa', prefix+'Utah-Valley', prefix+'Hofstra',
             prefix+'UC-Irvine', prefix+'North-Dakota-State', prefix+'Troy', prefix+'Wright-State',
             prefix+'Tennessee-State', prefix+'Furman', prefix+'Idaho', prefix+'Siena',
             prefix+'Queens', prefix+'UMBC', prefix+'Long-Island', prefix+'Howard', 
-            prefix+'Lehigh', prefix+'Florida-AM']
+            prefix+'Lehigh', prefix+'Penn', prefix+'Dayton',
+            prefix+'Wichita-State',prefix+'Prairie-View-AM', prefix+'Kennesaw-State',
+            prefix+'Hawaii', prefix+'California-Baptist']
